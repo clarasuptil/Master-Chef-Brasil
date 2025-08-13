@@ -1,49 +1,116 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const botaoAcessibilidade = document.getElementById('botao-acessibilidade');
-    const opcoesAcessibilidade = document.getElementById('opcoes-acessibilidade');
-    const aumentarFonteBtn = document.getElementById('aumentar-fonte');
-    const diminuirFonteBtn = document.getElementById('diminuir-fonte');
-    const alternarContrasteBtn = document.getElementById('alternar-contraste');
-    const body = document.body;
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    let tamanhoFonteAtual = 16;
-    const tamanhoFonteMin = 14;
-    const tamanhoFonteMax = 20;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>MasterChef Brasil</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-    // Alterna a visibilidade do menu de acessibilidade
-    if (botaoAcessibilidade && opcoesAcessibilidade) {
-        botaoAcessibilidade.addEventListener('click', () => {
-            const isExpanded = botaoAcessibilidade.getAttribute('aria-expanded') === 'true' || false;
-            botaoAcessibilidade.setAttribute('aria-expanded', !isExpanded);
-            opcoesAcessibilidade.classList.toggle('d-none');
-            opcoesAcessibilidade.classList.toggle('d-flex');
-        });
-    }
+<body>
+    <header class="header p-5">
+        <nav class="container d-flex justify-content-between align-items-center">
+            <img src="https://via.placeholder.com/150x50?text=Logo+MasterChef" class="img-fluid nav-img" alt="Logotipo do MasterChef Brasil">
+            <ul class="nav mt-5">
+                <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+            </ul>
+            <div id="acessibilidade" class="menu-acessibilidade">
+                <button id="botao-acessibilidade" class="btn btn-danger fw-bold" aria-expanded="false">Acessibilidade</button>
+                <div id="opcoes-acessibilidade" class="opcoes-acessibilidade d-none">
+                    <button id="aumentar-fonte" class="btn btn-primary fw-bold" aria-label="Aumentar o tamanho da fonte">A+</button>
+                    <button id="diminuir-fonte" class="btn btn-primary fw-bold" aria-label="Diminuir o tamanho da fonte">A-</button>
+                    <button id="alternar-contraste" class="btn btn-primary fw-bold" aria-label="Alternar o contraste de cores"><i class="bi bi-contrast"></i></button>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    // Aumenta o tamanho da fonte
-    if (aumentarFonteBtn) {
-        aumentarFonteBtn.addEventListener('click', () => {
-            if (tamanhoFonteAtual < tamanhoFonteMax) {
-                tamanhoFonteAtual += 2;
-                body.style.fontSize = `${tamanhoFonteAtual}px`;
-            }
-        });
-    }
+    <main class="container my-5">
+        <section id="inicio" class="my-5">
+            <div class="inicio-fundo d-flex flex-column flex-md-row justify-content-center align-items-center text-center text-md-start p-4 p-md-5 rounded-4">
+                <div class="esquerda-conteudo me-md-4 mb-4 mb-md-0">
+                    <h1 class="display-4 text-white fst-italic fw-bold">Bem-vindo ao</h1>
+                    <a href="#masterchef" class="btn btn-primary btn-lg botao-inicio fw-semibold mt-3">Quero conhecer!</a>
+                </div>
+                <img src="https://img.band.uol.com.br/image/2024/05/29/masterchef-share-163348.jpg" alt="Logo do MasterChef Brasil" class="img-fluid img-inicio rounded-4" style="max-width: 400px;">
+            </div>
+        </section>
 
-    // Diminui o tamanho da fonte
-    if (diminuirFonteBtn) {
-        diminuirFonteBtn.addEventListener('click', () => {
-            if (tamanhoFonteAtual > tamanhoFonteMin) {
-                tamanhoFonteAtual -= 2;
-                body.style.fontSize = `${tamanhoFonteAtual}px`;
-            }
-        });
-    }
+        <section id="masterchef" class="my-5 pt-5" tabindex="0" aria-label="Seção explicativa sobre o programa de TV MasterChef Brasil">
+            <div class="container d-flex flex-column flex-md-row align-items-center">
+                <div class="col-md-4 d-flex justify-content-center mb-4 mb-md-0">
+                    <img src="https://via.placeholder.com/273x331?text=Imagem+do+MasterChef" alt="Jurados do MasterChef Brasil" class="rounded-pill img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <h2>O que é o MasterChef Brasil?</h2>
+                    <p class="p-2">MasterChef Brasil é um reality culinário brasileiro, do gênero competição, exibido pela Band, baseado na franquia original de mesmo nome exibido pela BBC no Reino Unido. Até a décima primeira temporada, o programa foi apresentado por Ana Paula Padrão. A banca de jurados é composta pelos chefs Érick Jacquin, Helena Rizzo, que substituiu Paola Carosella a partir da edição de 2021, e Henrique Fogaça, que foi temporariamente substituído por Rodrigo Oliveira na edição de 2023. A primeira temporada estreou em 2 de setembro de 2014 e, até outubro de 2024, onze temporadas já foram realizadas. O programa é transmitido em Portugal pelo canal SIC Mulher e mais de 49 países, incluindo todos os países da América Latina.</p>
+                </div>
+            </div>
+        </section>
 
-    // Alterna o modo de alto contraste
-    if (alternarContrasteBtn) {
-        alternarContrasteBtn.addEventListener('click', () => {
-            body.classList.toggle('contraste-ativo');
-        });
-    }
-});
+        <section id="galeria" class="py-5" tabindex="0" aria-label="Seção de galeria de imagens">
+            <h2 class="text-center mb-4">Galeria</h2>
+            <div class="container p-3 mt-3 fundo-galeria rounded-4">
+                <div class="row justify-content-center g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <img src="https://classic.exame.com/wp-content/uploads/2021/09/masterchef.jpg" alt="Foto dos jurados com os participantes" class="img-fluid rounded-5">
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <img src="https://www.estadao.com.br/resizer/v2/4DEJHGO3SZN2VOKXQWJAKXDBMU.jpg?quality=80&auth=93d3c73fd3291d92bfb2d8f5ab5e691ef2114210bc9f9e791418623825682fff&width=1075&height=527&focal=0,0" alt="Foto da apresentadora Ana Paula Padrão com os jurados" class="img-fluid rounded-5">
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <img src="https://via.placeholder.com/400x300?text=Participantes+cozinhando" alt="Participantes cozinhando em suas bancadas" class="img-fluid rounded-5">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-5">
+            <div class="container d-flex justify-content-center">
+                <div class="col-md-10 col-lg-8 p-5 rounded-5 formulario">
+                    <h2 class="mb-3">Entre em contato</h2>
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" id="nome" name="nome" class="form-control rounded-3 mt-1" placeholder="Digite seu nome completo">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control rounded-3 mt-1" placeholder="Digite seu email">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="mensagem" class="form-label">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" class="form-control rounded-4 mt-2" rows="4" placeholder="Escreva sua mensagem"></textarea>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill">Enviar mensagem</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center p-4 footer-bg">
+        <p class="fst-italic m-0">Acesse nossas redes:</p>
+        <div class="social-icons my-2">
+            <a href="#" class="text-white mx-2"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" class="text-white mx-2"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white mx-2"><i class="bi bi-tiktok"></i></a>
+        </div>
+        <p class="mt-3 m-0">Desenvolvido por Start by Alura. Projeto fictício sem fins comerciais.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
